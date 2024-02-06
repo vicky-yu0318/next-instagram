@@ -9,7 +9,7 @@ type TodoData = {
 };
 
 // TODO: 建立 api 實體 (會產出 reducer， 裡面有 pending, seccess, error 的狀態)，直接可調用
-export const todoApiService = createApi({
+export const todoApi = createApi({
   reducerPath: "todoApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://jsonplaceholder.typicode.com/",
@@ -22,4 +22,4 @@ export const todoApiService = createApi({
   }),
 });
 
-export const { useGetTodoListQuery } = todoApiService;
+export const { useGetTodoListQuery } = todoApi;

@@ -1,23 +1,26 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "@/slices/todo";
 import { combineReducers } from "@reduxjs/toolkit";
-import { todoApiService } from "@/services/todoApi";
+import todoReducer from "@/slices/todo";
+import friendReducer from "@/slices/friendSlice";
+import { todoApi } from "@/services/todoApi";
+import { homeApi } from "@/services/homeServices";
 
 const reducers = combineReducers({
   todoReducer,
-  [todoApiService.reducerPath]: todoApiService.reducer, // 把他抽出來
+  [todoApi.reducerPath]: todoApi.reducer,
+  [homeApi.reducerPath]: homeApi.reducer,
+  friendReducer,
 });
 
 const store = configureStore({
-  // reducer: {
-  //   todoReducer,
-  // },
   reducer: reducers,
 
   // TODO: 加入 middleware 的寫法
   // TODO: configureStore 會自動將目前 middleware 寫進來
   middleware: (getCurrentMiddlewares) => {
-    return getCurrentMiddlewares().concat(todoApiService.middleware);
+    return getCurrentMiddlewares()
+      .concat(todoApi.middleware)
+      .concat(homeApi.middleware);
   },
 });
 

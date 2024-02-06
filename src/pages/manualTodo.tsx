@@ -2,12 +2,10 @@ import { useState } from "react";
 import styled from "styled-components"; //https://www.npmjs.com/package/styled-components
 import { useAppSelector, useAppDispatch } from "@/hooks";
 import { addTodo, addTimestamp } from "@/slices/todo";
-import { useGetTodoListQuery } from "@/services/todoApi";
 
 function ManualTodo() {
   const todoReducer = useAppSelector((state) => state.todoReducer);
   const todoList = todoReducer.todoList;
-
   const dispatch = useAppDispatch();
   const [text, setText] = useState("");
 
@@ -25,7 +23,6 @@ function ManualTodo() {
       <div
         className="p-2 bg-cyan-500 active:bg-cyan-900 text-white rounded-xl mt-5 text-center"
         onClick={() => {
-          // dispatch(addTodo("text"));
           if (!text) {
             alert("請輸入TODO內容");
             return;
