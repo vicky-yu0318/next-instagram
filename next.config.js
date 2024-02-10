@@ -7,8 +7,11 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
+        // destination: "http://localhost:3004/:path*",
         destination:
           "https://01ebde40d361d5e1f75f3bb5fabf1990.serveo.net/:path*",
+        destination:
+          "https://f9f24305bfce74d119522a066f5ff791.serveo.net/:path*",
       },
     ];
   },
